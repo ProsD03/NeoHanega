@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NeoHanega": {
+      "commandName": "Project",
+      "commandLineArgs": "--start"
+    }
+  }
+}
