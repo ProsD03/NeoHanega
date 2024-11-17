@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NeoHanega"
         mc:Ignorable="d"
-        Title="NeoHanega Configuration" Height="279" Width="451" ResizeMode="NoResize">
-    <Grid Margin="0,0,329,175">
-
+        Title="NeoHanega Configuration" Height="209" Width="380" ResizeMode="NoResize" Background="White">
+    <Grid Width="380">
+        <Label x:Name="label" Content="3DMigoto Executable Path" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
+        <TextBox x:Name="migotopath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True"/>
+        <Button x:Name="migotoselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,26,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="migotoselect_button_Click"/>
+        <Label x:Name="label_Copy" Content="Genshin Impact Executable" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
+        <TextBox x:Name="genshinpath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True"/>
+        <Button x:Name="genshinselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,74,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="genshinselect_button_Click"/>
+        <CheckBox x:Name="uac_checkbox" Content="Remove &quot;Run as Admin&quot; pop-up?" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Checked="uac_checkbox_Checked"/>
+        <Button x:Name="ok_button" Content="OK" HorizontalAlignment="Left" Margin="205,133,0,0" VerticalAlignment="Top" Width="73" Height="20"/>
+        <Button x:Name="cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="283,133,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="cancel_button_Click"/>
     </Grid>
 </Window>
