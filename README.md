@@ -1,1 +1,46 @@
-# NeoHanega
+![Hanega (1)](https://github.com/user-attachments/assets/b220eb43-0613-4190-952e-f7b5e124f54d)
+
+# Hanega
+Easily launch a modded version of Genshin Impact (with [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer)) in a single click using **Hanega**—a **Windows-exclusive** tool designed for convenience.
+
+**Hanega** is a lightweight bootstrapper that prepares and launches larger applications seamlessly. It simplifies the process of starting *GIMI/3DMigoto* and *Genshin Impact* by creating a desktop shortcut that launches both applications in the correct sequence with one click. Hanega ensures *GIMI* starts before *Genshin Impact* for optimal performance.
+Additionally, it removes the "Run as Admin" prompts typically required when launching *GIMI* and *Genshin Impact*, further streamlining the experience.
+
+## Requirements
+To function correctly, **Hanega** requires:
+- A computer running Windows 10 or later.
+- The latest version of Genshin Impact installed.
+- The latest version of [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer) installed.
+
+## Getting Started
+Launch Hanega. The following window will appear:
+
+![image](https://github.com/user-attachments/assets/8abfdb9d-8224-4d76-8554-15c49e6ae618)
+
+Press "Select..." for both *3DMigoto* (*GIMI*) and *Genshin Impact*, then choose the appropriate executable file. For *3DMigoto*, select `3DMigoto Loader.exe`; for *Genshin Impact*, select `GenshinImpact.exe` (***IMPORTANT: Select the Genshin Impact game executable, not its launcher.***).<br>
+Optionally, check the "Remove 'Run as Admin' pop-up?" box. When everything is set, press OK and follow the on-screen instructions.
+
+Once installed, use the "Launch Hanega" shortcut on your desktop (feel free to move it to any location) and enjoy!
+
+## Features
+- Simple user interface (made in QT6!) to configure the tool.
+- One-click startup of GIMI and Genshin Impact.
+- Small program size and no installation required.
+- Removal of "Run as Admin" prompts from GIMI and Genshin Impact.
+- *Cool name and icon.*
+
+### Planned Features
+- **Profile Managing**: Create different launch profiles, with different settings and mods.
+- **Automatic path detection**: Automatically detect where Genshin Impact is installed.
+- *More to come in the future.*
+
+## Credits
+Hanega is just a tool: it only works because other people released their work for everyone to freely use.<br>
+In no partcular order, I credit those whose work made Hanega possible:
+- **Hoyoverse** for releasing Genshin Impact, a game that to this day nourishes a beautiful community.
+- **DarkStarSword, bo3b and Chiri** for making 3DMigoto, a tool that makes modding anticheat-protected games possible.
+- **SilentNightSound** for finetuning 3DMigoto into GIMI, without which modding Genshin would've been extremely difficult.
+
+I also want to thank **@Junktion** for helping me catch bugs during development and choosing a cool name for Hanega.
+
+And I want to thank you, reader, for using Hanega.
