@@ -110,16 +110,15 @@ namespace NeoHanega
 
             string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
-            using (StreamWriter writer = new StreamWriter(deskDir + "\\Launch NeoHanega.url"))
-            {
-                string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                writer.WriteLine("[InternetShortcut]");
-                writer.WriteLine("URL=file:///" + app + " --start");
-                writer.WriteLine("IconIndex=0");
-                string link_icon = app.Replace('\\', '/');
-                writer.WriteLine("IconFile=" + link_icon);
-            }
+            string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            string shortcutPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Launch NeoHanega.lnk";
 
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(shortcutPath);
+            shortcut.TargetPath = exePath; // Path to the .exe
+            shortcut.Arguments = "--start"; // Add the arguments
+            shortcut.IconLocation = exePath; // Use the same icon as the executable
+            shortcut.Save();
             Dictionary<String, String> config = new Dictionary<String, String>();
             config["genshinPath"] = genshinPath;
             config["migotoPath"] = migotoPath;
