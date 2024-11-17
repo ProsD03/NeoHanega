@@ -12,7 +12,7 @@ namespace NeoHanega
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            mainWindow.Show();  
         }
     }
 

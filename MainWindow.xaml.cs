@@ -69,15 +69,12 @@ namespace NeoHanega
         {
             if (removeUAC)
             {
-                String title = "Info";
-                String message = "To prevent the \"Run as Admin\" prompt when launching games, NeoHanega will now start a helper " +
-                        "program, Musou, which requires admin privileges to make the necessary system changes. You " +
-                        "will see a \"Run as Admin\" prompt for Musou, allowing it to apply these changes. After this " +
-                        "setup, you won’t see the prompt when starting your games.";
-                MessageBoxButton buttons = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Information;
-
-                MessageBox.Show(message, title, buttons, icon, MessageBoxResult.OK);
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", true);
+                if (key != null)
+                {
+                    key.SetValue(genshinPath, "~ RUNASINVOKER", RegistryValueKind.String);
+                    key.SetValue(migotoPath, "~ RUNASINVOKER", RegistryValueKind.String);
+                }
             }
         }
 
