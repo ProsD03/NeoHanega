@@ -13,19 +13,21 @@ To function correctly, **NeoHanega** requires:
 - The latest version of [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer) installed.
 
 ## Getting Started
-Launch Hanega. The following window will appear:
+To get started, download the [latest release](https://github.com/ProsD03/NeoHanega/releases) and extract it in a permanent location, like the *Documents* folder.
 
-![image](https://github.com/user-attachments/assets/8abfdb9d-8224-4d76-8554-15c49e6ae618)
+After that, launch NeoHanega. The following window will appear:
+
+![image](https://github.com/user-attachments/assets/4adb2df0-4104-4fb2-8a7c-deaca919f4f4)
 
 Press "Select..." for both *3DMigoto* (*GIMI*) and *Genshin Impact*, then choose the appropriate executable file. For *3DMigoto*, select `3DMigoto Loader.exe`; for *Genshin Impact*, select `GenshinImpact.exe` (***IMPORTANT: Select the Genshin Impact game executable, not its launcher.***).<br>
 Optionally, check the "Remove 'Run as Admin' pop-up?" box. When everything is set, press OK and follow the on-screen instructions.
 
-Once installed, use the "Launch Hanega" shortcut on your desktop (feel free to move it to any location) and enjoy!
+Once installed, use the "Launch NeoHanega" shortcut on your desktop (feel free to move it to any location) and enjoy!
 
 ## Features
-- Simple user interface (made in QT6!) to configure the tool.
+- Simple user interface to configure the tool.
 - One-click startup of GIMI and Genshin Impact.
-- Small program size and no installation required.
+- Small download size and no installation required.
 - Removal of "Run as Admin" prompts from GIMI and Genshin Impact.
 - *Cool name and icon.*
 
@@ -35,12 +37,12 @@ Once installed, use the "Launch Hanega" shortcut on your desktop (feel free to m
 - *More to come in the future.*
 
 ## Credits
-Hanega is just a tool: it only works because other people released their work for everyone to freely use.<br>
+NeoHanega is just a tool: it only works because other people released their work for everyone to freely use.<br>
 In no partcular order, I credit those whose work made Hanega possible:
 - **Hoyoverse** for releasing Genshin Impact, a game that to this day nourishes a beautiful community.
 - **DarkStarSword, bo3b and Chiri** for making 3DMigoto, a tool that makes modding anticheat-protected games possible.
 - **SilentNightSound** for finetuning 3DMigoto into GIMI, without which modding Genshin would've been extremely difficult.
 
-I also want to thank **@Junktion** for helping me catch bugs during development and choosing a cool name for Hanega.
+I also want to thank **@Junktion** for helping me catch bugs during development and choosing a cool name for NeoHanega.
 
 And I want to thank you, reader, for using Hanega.
