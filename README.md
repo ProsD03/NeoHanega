@@ -1,13 +1,13 @@
-![Hanega (1)](https://github.com/user-attachments/assets/b220eb43-0613-4190-952e-f7b5e124f54d)
+![NeoHanega](https://github.com/user-attachments/assets/aad2b827-2c8b-417a-99cf-a221a79cc245)
 
-# Hanega
-Easily launch a modded version of Genshin Impact (with [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer)) in a single click using **Hanega**—a **Windows-exclusive** tool designed for convenience.
+# NeoHanega
+Easily launch a modded version of Genshin Impact (with [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer)) in a single click using **NeoHanega**—a **Windows-exclusive** tool designed for convenience.
 
-**Hanega** is a lightweight bootstrapper that prepares and launches larger applications seamlessly. It simplifies the process of starting *GIMI/3DMigoto* and *Genshin Impact* by creating a desktop shortcut that launches both applications in the correct sequence with one click. Hanega ensures *GIMI* starts before *Genshin Impact* for optimal performance.
+**NeoHanega** is a lightweight bootstrapper that prepares and launches larger applications seamlessly. It simplifies the process of starting *GIMI/3DMigoto* and *Genshin Impact* by creating a desktop shortcut that launches both applications in the correct sequence with one click. NeoHanega ensures *GIMI* starts before *Genshin Impact* for optimal performance.
 Additionally, it removes the "Run as Admin" prompts typically required when launching *GIMI* and *Genshin Impact*, further streamlining the experience.
 
 ## Requirements
-To function correctly, **Hanega** requires:
+To function correctly, **NeoHanega** requires:
 - A computer running Windows 10 or later.
 - The latest version of Genshin Impact installed.
 - The latest version of [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer) installed.
