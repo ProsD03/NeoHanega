@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static NeoHanega.GenshinFinder;
 
 namespace NeoHanega
 {
@@ -24,29 +25,58 @@ namespace NeoHanega
         private String? migotoPath;
         private bool removeUAC = false;
 
-        public MainWindow()
+        public MainWindow(String? genshinPath, String? migotoPath)
         {
             InitializeComponent();
+            if (genshinPath == null)
+            {
+                GenshinFinder.FindGenshin(updateGenshinPath);
+            } else
+            {
+                this.genshinPath = genshinPath;
+                this.migotoPath = migotoPath;
+            }
+
+            genshinpath_textbox.Text = genshinPath;
+            migotopath_textbox.Text = migotoPath;
+        }
+
+        private void updateGenshinPath(String? path)
+        {
+            if(path != null)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    genshinPath = path += "\\GenshinImpact.exe";
+                    genshinpath_textbox.Text = genshinPath;
+                });
+            }
         }
 
         private void migotoselect_button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog migotoFileDialog = new OpenFileDialog();
-            migotoFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            migotoFileDialog.InitialDirectory = migotoPath != null ? migotoPath : Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             migotoFileDialog.Filter = "3D Migoto Executable|3DMigoto Loader.exe|Any Executable|*.exe";
             migotoFileDialog.ShowDialog();
-            migotoPath = migotoFileDialog.FileName;
-            migotopath_textbox.Text = migotoFileDialog.FileName;
+            if (migotoFileDialog.FileName != "")
+            {
+                migotoPath = migotoFileDialog.FileName;
+                migotopath_textbox.Text = migotoFileDialog.FileName;
+            }
         }
 
         private void genshinselect_button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog genshinFileDialog = new OpenFileDialog();
-            genshinFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            genshinFileDialog.InitialDirectory = genshinPath != null ? genshinPath : Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             genshinFileDialog.Filter = "Genshin Impact Executable|GenshinImpact.exe|Any Executable|*.exe";
             genshinFileDialog.ShowDialog();
-            genshinPath = genshinFileDialog.FileName;
-            genshinpath_textbox.Text = genshinFileDialog.FileName;
+            if (genshinFileDialog.FileName != "")
+            {
+                genshinPath = genshinFileDialog.FileName;
+                genshinpath_textbox.Text = genshinFileDialog.FileName;
+            }
         }
 
         private void uac_checkbox_Checked(object sender, RoutedEventArgs e)
@@ -110,7 +140,7 @@ namespace NeoHanega
 
             string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
-            string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+            string exePath = Environment.ProcessPath;
             string shortcutPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Launch NeoHanega.lnk";
 
             IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();

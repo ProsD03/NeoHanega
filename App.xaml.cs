@@ -24,18 +24,19 @@ namespace NeoHanega
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            if (e.Args.Contains("--start")) 
+            string localAppdata = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string configPath = localAppdata + "\\NeoHanega";
+            NeoHanegaConfig config = new NeoHanegaConfig();
+            if (Directory.Exists(configPath))
             {
-                string localAppdata = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                string configPath = localAppdata + "\\NeoHanega";
-                if (Directory.Exists(configPath))
+                if (File.Exists(configPath + "\\config.json"))
                 {
-                    if (File.Exists(configPath + "\\config.json"))
+                    config = JsonSerializer.Deserialize<NeoHanegaConfig>(File.ReadAllText(configPath + "\\config.json"));
+                    if (config != null)
                     {
-                        NeoHanegaConfig config = JsonSerializer.Deserialize<NeoHanegaConfig>(File.ReadAllText(configPath + "\\config.json"));
-                        if (config != null)
+                        if (File.Exists(config.genshinPath) && File.Exists(config.migotoPath))
                         {
-                            if (File.Exists(config.genshinPath) && File.Exists(config.migotoPath))
+                            if (e.Args.Contains("--start"))
                             {
                                 ProcessStartInfo migotoStart = new ProcessStartInfo();
                                 migotoStart.FileName = config.migotoPath;
@@ -56,7 +57,20 @@ namespace NeoHanega
                     }
                 }
             }
-            MainWindow mainWindow = new MainWindow();
+
+            String genshinPath = null;
+            String migotoPath = null;
+
+            if(config.genshinPath != null)
+            {
+                genshinPath = config.genshinPath;
+            }
+            if(config.migotoPath != null)
+            {
+                migotoPath = config.migotoPath;
+            }
+
+            MainWindow mainWindow = new MainWindow(genshinPath, migotoPath);
             mainWindow.Show();  
         }
     }
