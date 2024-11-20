@@ -9,6 +9,7 @@ Additionally, it removes the "Run as Admin" prompts typically required when laun
 ## Requirements
 To function correctly, **NeoHanega** requires:
 - A computer running Windows 10 or later.
+- .NET Desktop Runtime 8.0.0 (which can be downloaded [here](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.0-windows-x64-installer)).
 - The latest version of Genshin Impact installed.
 - The latest version of [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer) installed.
 
@@ -26,14 +27,15 @@ Once installed, use the "Launch NeoHanega" shortcut on your desktop (feel free t
 
 ## Features
 - Simple user interface to configure the tool.
+- Automatic Genshin Impact installation folder detection.
 - One-click startup of GIMI and Genshin Impact.
 - Small download size and no installation required.
 - Removal of "Run as Admin" prompts from GIMI and Genshin Impact.
 - *Cool name and icon.*
 
 ### Planned Features
+- **Support of FPSUnlocker:** Support FPSUnlocker, another modding tool for Genshin Impact.
 - **Profile Managing**: Create different launch profiles, with different settings and mods.
-- **Automatic path detection**: Automatically detect where Genshin Impact is installed.
 - *More to come in the future.*
 
 ## Credits
