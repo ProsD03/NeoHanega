@@ -8,14 +8,14 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Hanega.ico</ApplicationIcon>
     <PlatformTarget>x64</PlatformTarget>
-    <Version>1.1.0</Version>
+    <Version>1.1.5</Version>
     <Authors>ProsD</Authors>
     <Company>ProsD Industires</Company>
     <Title>NeoHanega</Title>
     <PackageProjectUrl>https://github.com/ProsD03/NeoHanega</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ProsD03/NeoHanega</RepositoryUrl>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.1.5</AssemblyVersion>
+    <FileVersion>1.1.5</FileVersion>
     <SignAssembly>False</SignAssembly>
     <Copyright>Copyright (C) 2024  ProsD</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
