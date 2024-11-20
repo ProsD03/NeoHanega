@@ -113,9 +113,9 @@ namespace NeoHanega
 
         private void fpsunlockerenable_checkbox_Unchecked(object sender, RoutedEventArgs e)
         {
-            enableFpsunlocker = true;
-            fpsunlockerselect_button.IsEnabled = true;
-            fpsunlockerpath_textbox.IsEnabled = true;
+            enableFpsunlocker = false;
+            fpsunlockerselect_button.IsEnabled = false;
+            fpsunlockerpath_textbox.IsEnabled = false;
         }
 
 
@@ -152,10 +152,10 @@ namespace NeoHanega
 
         private void ok_button_Click(object sender, RoutedEventArgs e)
         {
-            if(genshinPath == null || migotoPath == null)
+            if(genshinPath == null)
             {
-                String title_err = "Error: Missing Paths";
-                String message_err = "Both the 3DMigoto and Genshin Impact executables must be selected before continuing.";
+                String title_err = "Error: Missing Path";
+                String message_err = "Genshin Impact executable must be selected before continuing.";
                 MessageBoxButton buttons_err = MessageBoxButton.OK;
                 MessageBoxImage icon_err = MessageBoxImage.Error;
 
@@ -163,32 +163,77 @@ namespace NeoHanega
                 return;
             }
 
+            if(!enableMigoto && !enableFpsunlocker)
+            {
+                String title_err = "Error: No Mod Selected";
+                String message_err = "At least one mod must be enabled before continuing.";
+                MessageBoxButton buttons_err = MessageBoxButton.OK;
+                MessageBoxImage icon_err = MessageBoxImage.Error;
+
+                MessageBox.Show(message_err, title_err, buttons_err, icon_err, MessageBoxResult.OK);
+                return;
+            }
+
+            if (enableMigoto && migotoPath == null)
+            {
+                String title_err = "Error: Missing Path";
+                String message_err = "3DMigoto executable must be selected before continuing.";
+                MessageBoxButton buttons_err = MessageBoxButton.OK;
+                MessageBoxImage icon_err = MessageBoxImage.Error;
+
+                MessageBox.Show(message_err, title_err, buttons_err, icon_err, MessageBoxResult.OK);
+                return;
+            }
+
+            if (enableFpsunlocker && fpsunlockerPath == null)
+            {
+                String title_err = "Error: Missing Path";
+                String message_err = "FPSUnlocker executable must be selected before continuing.";
+                MessageBoxButton buttons_err = MessageBoxButton.OK;
+                MessageBoxImage icon_err = MessageBoxImage.Error;
+
+                MessageBox.Show(message_err, title_err, buttons_err, icon_err, MessageBoxResult.OK);
+                return;
+            }
+
+
             if (removeUAC)
             {
                 RegistryKey? key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", true);
                 if (key != null)
                 {
                     key.SetValue(genshinPath, "~ RUNASINVOKER", RegistryValueKind.String);
-                    key.SetValue(migotoPath, "~ RUNASINVOKER", RegistryValueKind.String);
+                    if(enableMigoto)
+                    {
+                        key.SetValue(migotoPath, "~ RUNASINVOKER", RegistryValueKind.String);
+                    }
+                    if(enableFpsunlocker)
+                    {
+                        key.SetValue(fpsunlockerPath, "~ RUNASINVOKER", RegistryValueKind.String);
+                    }
                 }
-                String migotoFolder = Directory.GetParent(migotoPath).FullName;
-                String migotoConfig = migotoFolder + "\\d3dx.ini";
-                if (!File.Exists(migotoConfig))
+
+                if (enableMigoto)
                 {
-                    String title_war = "Warning: Non-standard Installation";
-                    String message_war = "The d3dx.ini file could not be found in the 3DMigoto Folder. 3DMigoto installation might not be standard, " +
-                        "and UAC bypass could have failed.";
-                    MessageBoxButton buttons_war = MessageBoxButton.OK;
-                    MessageBoxImage icon_war = MessageBoxImage.Warning;
+                    String migotoFolder = Directory.GetParent(migotoPath).FullName;
+                    String migotoConfig = migotoFolder + "\\d3dx.ini";
+                    if (!File.Exists(migotoConfig))
+                    {
+                        String title_war = "Warning: Non-standard Installation";
+                        String message_war = "The d3dx.ini file could not be found in the 3DMigoto Folder. 3DMigoto installation might not be standard, " +
+                            "and UAC bypass could have failed.";
+                        MessageBoxButton buttons_war = MessageBoxButton.OK;
+                        MessageBoxImage icon_war = MessageBoxImage.Warning;
 
-                    MessageBox.Show(message_war, title_war, buttons_war, icon_war, MessageBoxResult.OK);
-                    return;
+                        MessageBox.Show(message_war, title_war, buttons_war, icon_war, MessageBoxResult.OK);
+                        return;
+                    }
+
+                    string text = File.ReadAllText(migotoConfig);
+                    text = text.Replace(";require_admin", "require_admin");
+                    text = text.Replace("require_admin = true", "require_admin = false");
+                    File.WriteAllText(migotoConfig, text);
                 }
-
-                string text = File.ReadAllText(migotoConfig);
-                text = text.Replace(";require_admin", "require_admin");
-                text = text.Replace("require_admin = true", "require_admin = false");
-                File.WriteAllText(migotoConfig, text);
             }
 
             string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
