@@ -23,6 +23,10 @@ namespace NeoHanega
 
         private String? genshinPath;
         private String? migotoPath;
+        private String? fpsunlockerPath;
+
+        private bool enableMigoto = false;
+        private bool enableFpsunlocker = false;
         private bool removeUAC = false;
 
         public MainWindow(String? genshinPath, String? migotoPath)
@@ -34,12 +38,18 @@ namespace NeoHanega
             } else
             {
                 this.genshinPath = genshinPath;
+
+                enableMigoto = migotoPath != null;
                 this.migotoPath = migotoPath;
             }
 
             genshinpath_textbox.Text = genshinPath;
+
             migotopath_textbox.Text = migotoPath;
-        }
+            migotopath_textbox.IsEnabled = enableMigoto;
+            migotoenable_checkbox.IsChecked = enableMigoto;
+            migotoselect_button.IsEnabled = enableMigoto;
+            }
 
         private void updateGenshinPath(String? path)
         {
@@ -53,6 +63,7 @@ namespace NeoHanega
             }
         }
 
+
         private void migotoselect_button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog migotoFileDialog = new OpenFileDialog();
@@ -65,6 +76,48 @@ namespace NeoHanega
                 migotopath_textbox.Text = migotoFileDialog.FileName;
             }
         }
+
+        private void migotoenable_checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            enableMigoto = true;
+            migotoselect_button.IsEnabled = true;
+            migotopath_textbox.IsEnabled = true;
+        }
+        private void migotoenable_checkbox_Unhecked(object sender, RoutedEventArgs e)
+        {
+            enableMigoto = false;
+            migotoselect_button.IsEnabled = false;
+            migotopath_textbox.IsEnabled = false;
+        }
+
+
+        private void fpsunlockerselect_button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fpsunlockerFileDialog = new OpenFileDialog();
+            fpsunlockerFileDialog.InitialDirectory = fpsunlockerPath != null ? fpsunlockerPath : Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            fpsunlockerFileDialog.Filter = "FPSUnlocker Executable|unlockfps_nc.exe|Any Executable|*.exe";
+            fpsunlockerFileDialog.ShowDialog();
+            if (fpsunlockerFileDialog.FileName != "")
+            {
+                fpsunlockerPath = fpsunlockerFileDialog.FileName;
+                fpsunlockerpath_textbox.Text = fpsunlockerFileDialog.FileName;
+            }
+        }
+
+        private void fpsunlockerenable_checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            enableFpsunlocker = true;
+            fpsunlockerselect_button.IsEnabled = true;
+            fpsunlockerpath_textbox.IsEnabled = true;
+        }
+
+        private void fpsunlockerenable_checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            enableFpsunlocker = true;
+            fpsunlockerselect_button.IsEnabled = true;
+            fpsunlockerpath_textbox.IsEnabled = true;
+        }
+
 
         private void genshinselect_button_Click(object sender, RoutedEventArgs e)
         {
@@ -178,6 +231,5 @@ namespace NeoHanega
         {
             Application.Current.Shutdown();
         }
-
     }
 }
