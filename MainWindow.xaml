@@ -9,7 +9,7 @@
     <Grid Width="380">
         <Label x:Name="label" Content="3DMigoto Executable Path" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
         <TextBox x:Name="migotopath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True" IsEnabled="False"/>
-        <Button x:Name="migotoselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,26,0,0" VerticalAlignment="Top" Width="73" Height="20" IsEnabled="False"/>
+        <Button x:Name="migotoselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,26,0,0" VerticalAlignment="Top" Width="73" Height="20" IsEnabled="False" Click="migotoselect_button_Click"/>
         <Label x:Name="label_Copy" Content="Genshin Impact Executable" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
         <TextBox x:Name="genshinpath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True"/>
         <Button x:Name="genshinselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,163,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="genshinselect_button_Click"/>

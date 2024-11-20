@@ -29,7 +29,7 @@ namespace NeoHanega
         private bool enableFpsunlocker = false;
         private bool removeUAC = false;
 
-        public MainWindow(String? genshinPath, String? migotoPath)
+        public MainWindow(String? genshinPath, String? migotoPath, String? fpsPath)
         {
             InitializeComponent();
             if (genshinPath == null)
@@ -41,6 +41,9 @@ namespace NeoHanega
 
                 enableMigoto = migotoPath != null;
                 this.migotoPath = migotoPath;
+
+                enableFpsunlocker = fpsPath != null;
+                this.fpsunlockerPath = fpsPath;
             }
 
             genshinpath_textbox.Text = genshinPath;
@@ -49,6 +52,11 @@ namespace NeoHanega
             migotopath_textbox.IsEnabled = enableMigoto;
             migotoenable_checkbox.IsChecked = enableMigoto;
             migotoselect_button.IsEnabled = enableMigoto;
+
+            fpsunlockerpath_textbox.Text = fpsPath;
+            fpsunlockerpath_textbox.IsEnabled = enableFpsunlocker;
+            fpsunlockerenable_checkbox.IsChecked = enableFpsunlocker;
+            fpsunlockerselect_button.IsEnabled = enableFpsunlocker;
             }
 
         private void updateGenshinPath(String? path)
@@ -236,6 +244,26 @@ namespace NeoHanega
                 }
             }
 
+            if (enableFpsunlocker)
+            {
+                List<string> migotoDlls = null;
+                if (enableMigoto)
+                {
+                    migotoDlls = new List<string>();
+                    String migotoFolder = Directory.GetParent(migotoPath).FullName;
+                    migotoDlls.Add(migotoFolder + "\\d3d11.dll");
+                    migotoDlls.Add(migotoFolder + "\\d3dcompiler_46.dll");
+                    migotoDlls.Add(migotoFolder + "\\nvapi64.dll");
+                }
+
+
+                String fpsunlockerFolder = Directory.GetParent(fpsunlockerPath).FullName;
+                FPSUnlockerConfig fpsUnlockerConfig = new FPSUnlockerConfig(genshinPath, migotoDlls);
+                string fpsjson = JsonSerializer.Serialize(fpsUnlockerConfig);
+                File.WriteAllText(fpsunlockerFolder + "\\fps_config.json", fpsjson);
+
+            }
+
             string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
             string exePath = Environment.ProcessPath ?? "";
@@ -249,7 +277,8 @@ namespace NeoHanega
             shortcut.Save();
             Dictionary<String, String> config = new Dictionary<String, String>();
             config["genshinPath"] = genshinPath;
-            config["migotoPath"] = migotoPath;
+            config["migotoPath"] = enableMigoto ? migotoPath ?? "" : "";
+            config["fpsunlockerPath"] = enableFpsunlocker ? fpsunlockerPath ?? "" : "";
 
             string localAppdata = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string configPath = localAppdata + "\\NeoHanega";
