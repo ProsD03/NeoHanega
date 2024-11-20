@@ -31,7 +31,7 @@ namespace NeoHanega
             {
                 if (File.Exists(configPath + "\\config.json"))
                 {
-                    config = JsonSerializer.Deserialize<NeoHanegaConfig>(File.ReadAllText(configPath + "\\config.json"));
+                    config = JsonSerializer.Deserialize<NeoHanegaConfig>(File.ReadAllText(configPath + "\\config.json")) ?? new NeoHanegaConfig();
                     if (config != null)
                     {
                         if (File.Exists(config.genshinPath) && File.Exists(config.migotoPath))
@@ -40,7 +40,7 @@ namespace NeoHanega
                             {
                                 ProcessStartInfo migotoStart = new ProcessStartInfo();
                                 migotoStart.FileName = config.migotoPath;
-                                migotoStart.WorkingDirectory = System.IO.Directory.GetParent(config.migotoPath).FullName;
+                                migotoStart.WorkingDirectory = Directory.GetParent(config.migotoPath).FullName;
                                 Process.Start(migotoStart);
 
                                 String migotoProcessName = Path.GetFileName(config.migotoPath).Split('.')[0];

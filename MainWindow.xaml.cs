@@ -112,13 +112,13 @@ namespace NeoHanega
 
             if (removeUAC)
             {
-                RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", true);
+                RegistryKey? key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", true);
                 if (key != null)
                 {
                     key.SetValue(genshinPath, "~ RUNASINVOKER", RegistryValueKind.String);
                     key.SetValue(migotoPath, "~ RUNASINVOKER", RegistryValueKind.String);
                 }
-                String migotoFolder = System.IO.Directory.GetParent(migotoPath).FullName;
+                String migotoFolder = Directory.GetParent(migotoPath).FullName;
                 String migotoConfig = migotoFolder + "\\d3dx.ini";
                 if (!File.Exists(migotoConfig))
                 {
@@ -140,7 +140,7 @@ namespace NeoHanega
 
             string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
-            string exePath = Environment.ProcessPath;
+            string exePath = Environment.ProcessPath ?? "";
             string shortcutPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Launch NeoHanega.lnk";
 
             IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
