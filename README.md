@@ -1,5 +1,12 @@
 ![NeoHanega](https://github.com/user-attachments/assets/aad2b827-2c8b-417a-99cf-a221a79cc245)
 
+# OBSOLESCENCE NOTICE
+NeoHanega was based on GIMI v7.x, an older version that is no longer maintained. Development efforts have moved to GIMI v8.x, with a launcher already existing for it: XXMI Launcher.
+It does everything NeoHanega did, plus its auto updating and more modern.
+If you are looking for a similar experience, move to that. 
+
+Thanks for downloading and using NeoHanega.
+
 # NeoHanega
 Easily launch a modded version of Genshin Impact (with [GI-Model-Importer](https://github.com/SilentNightSound/GI-Model-Importer)) in a single click using **NeoHanega**—a **Windows-exclusive** tool designed for convenience.
 
