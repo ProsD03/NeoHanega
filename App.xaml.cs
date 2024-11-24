@@ -17,6 +17,16 @@ namespace NeoHanega
         public String genshinPath { get; set; }
         public String migotoPath { get; set; }
 
+        public String fpsunlockerPath {  get; set; }
+
+        
+        public NeoHanegaConfig()
+        {
+            genshinPath = "";
+            migotoPath = "";
+            fpsunlockerPath = "";
+        }
+
     }
 
 
@@ -38,20 +48,30 @@ namespace NeoHanega
                         {
                             if (e.Args.Contains("--start"))
                             {
-                                ProcessStartInfo migotoStart = new ProcessStartInfo();
-                                migotoStart.FileName = config.migotoPath;
-                                migotoStart.WorkingDirectory = Directory.GetParent(config.migotoPath).FullName;
-                                Process.Start(migotoStart);
-
-                                String migotoProcessName = Path.GetFileName(config.migotoPath).Split('.')[0];
-
-                                while (Process.GetProcessesByName(migotoProcessName).Length < 1)
+                                if(config.fpsunlockerPath != "")
                                 {
-                                    System.Threading.Thread.Sleep(100);
-                                }
+                                    ProcessStartInfo fpsunlockerStart = new ProcessStartInfo();
+                                    fpsunlockerStart.FileName = config.fpsunlockerPath;
+                                    fpsunlockerStart.WorkingDirectory = Directory.GetParent(config.fpsunlockerPath).FullName;
+                                    Process.Start(fpsunlockerStart);
+                                    Application.Current.Shutdown();
+                                } else
+                                {
+                                    ProcessStartInfo migotoStart = new ProcessStartInfo();
+                                    migotoStart.FileName = config.migotoPath;
+                                    migotoStart.WorkingDirectory = Directory.GetParent(config.migotoPath).FullName;
+                                    Process.Start(migotoStart);
 
-                                Process.Start(config.genshinPath);
-                                Application.Current.Shutdown();
+                                    String migotoProcessName = Path.GetFileName(config.migotoPath).Split('.')[0];
+
+                                    while (Process.GetProcessesByName(migotoProcessName).Length < 1)
+                                    {
+                                        System.Threading.Thread.Sleep(100);
+                                    }
+
+                                    Process.Start(config.genshinPath);
+                                    Application.Current.Shutdown();
+                                }
                             }
                         }
                     }
@@ -60,17 +80,22 @@ namespace NeoHanega
 
             String genshinPath = null;
             String migotoPath = null;
+            String fpsUnlockerPath = null;
 
-            if(config.genshinPath != null)
+            if(config.genshinPath != "")
             {
                 genshinPath = config.genshinPath;
             }
-            if(config.migotoPath != null)
+            if(config.migotoPath != "")
             {
                 migotoPath = config.migotoPath;
             }
+            if(config.fpsunlockerPath != "")
+            {
+                fpsUnlockerPath = config.fpsunlockerPath;
+            }
 
-            MainWindow mainWindow = new MainWindow(genshinPath, migotoPath);
+            MainWindow mainWindow = new MainWindow(genshinPath, migotoPath, fpsUnlockerPath);
             mainWindow.Show();  
         }
     }

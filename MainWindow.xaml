@@ -5,16 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NeoHanega"
         mc:Ignorable="d"
-        Title="NeoHanega Configuration" Height="209" Width="380" ResizeMode="NoResize" Background="White">
+        Title="NeoHanega Configuration" Height="275" Width="380" ResizeMode="NoResize" Background="White">
     <Grid Width="380">
         <Label x:Name="label" Content="3DMigoto Executable Path" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
-        <TextBox x:Name="migotopath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True"/>
-        <Button x:Name="migotoselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,26,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="migotoselect_button_Click"/>
-        <Label x:Name="label_Copy" Content="Genshin Impact Executable" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
-        <TextBox x:Name="genshinpath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True"/>
-        <Button x:Name="genshinselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,74,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="genshinselect_button_Click"/>
-        <CheckBox x:Name="uac_checkbox" Content="Remove &quot;Run as Admin&quot; pop-up?" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Checked="uac_checkbox_Checked"/>
-        <Button x:Name="ok_button" Content="OK" HorizontalAlignment="Left" Margin="205,133,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="ok_button_Click"/>
-        <Button x:Name="cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="283,133,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="cancel_button_Click"/>
+        <TextBox x:Name="migotopath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True" IsEnabled="False"/>
+        <Button x:Name="migotoselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,26,0,0" VerticalAlignment="Top" Width="73" Height="20" IsEnabled="False" Click="migotoselect_button_Click"/>
+        <Label x:Name="label_Copy" Content="Genshin Impact Executable" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
+        <TextBox x:Name="genshinpath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True"/>
+        <Button x:Name="genshinselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,163,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="genshinselect_button_Click"/>
+        <CheckBox x:Name="uac_checkbox" Content="Remove &quot;Run as Admin&quot; pop-up?" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Checked="uac_checkbox_Checked"/>
+        <Button x:Name="ok_button" Content="OK" HorizontalAlignment="Left" Margin="205,207,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="ok_button_Click"/>
+        <Button x:Name="cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="283,207,0,0" VerticalAlignment="Top" Width="73" Height="20" Click="cancel_button_Click"/>
+        <Label x:Name="label_Copy1" Content="FPSUnlocker Executable Path" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Padding="0,0,0,0"/>
+        <TextBox x:Name="fpsunlockerpath_textbox" HorizontalAlignment="Left" Height="20" Margin="10,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" IsReadOnly="True" IsEnabled="False"/>
+        <Button x:Name="fpsunlockerselect_button" Content="Select..." HorizontalAlignment="Left" Margin="283,91,0,0" VerticalAlignment="Top" Width="73" Height="20" IsEnabled="False" Click="fpsunlockerselect_button_Click"/>
+        <CheckBox x:Name="migotoenable_checkbox" Content="Enable mod?" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Checked="migotoenable_checkbox_Checked" Unchecked="migotoenable_checkbox_Unhecked"/>
+        <CheckBox x:Name="fpsunlockerenable_checkbox" Content="Enable mod?" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Checked="fpsunlockerenable_checkbox_Checked" Unchecked="fpsunlockerenable_checkbox_Unchecked"/>
     </Grid>
 </Window>
